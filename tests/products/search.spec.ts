@@ -7,12 +7,15 @@ test.describe('Product search tests', () => {
       productPage,
     }) => {
       await productPage.navigateTo('/shop.php');
-
+      // Select the product category before searching
       await productPage.selectCategory(productData.category);
+      // Search for the product within the selected category
       await productPage.searchProduct(productData.product);
+      // Verify that the product is visible in the search results
       await productPage.verifyProductVisible(productData.product);
-
+      // Open the product details page
       await productPage.openProduct(productData.product);
+      // Verify the product details on the product page
       await productPage.verifyProductDetails(
         productData.product,
         productData.price,
